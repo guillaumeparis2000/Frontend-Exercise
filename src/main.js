@@ -29,7 +29,12 @@ DocReady(() => {
     }
 
     function dtClick() {
-        toggleDt(this);
+        if(this.classList.contains('ajax-request')) {
+            getAjaxContent(this);
+        }
+        else {
+            toggleDt(this);
+        }
     }
 
     function toggleDt(element) {
@@ -48,4 +53,19 @@ DocReady(() => {
             element.nextElementSibling.classList.remove('u-hidden')
         }
     }
+
+    function getAjaxContent(element, callback) {
+        let xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                element.nextElementSibling.innerHTML =  xmlhttp.responseText;
+                toggleDt(element);
+            }
+        };
+
+        xmlhttp.open('GET', '/ajax-content/' + element.getAttribute('data-file-name'), true);
+        xmlhttp.send();
+    }
+
 });
