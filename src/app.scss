@@ -12,6 +12,10 @@ dl.Accordion {
         font-size: 14px;
         background: #fbfbfb;
         padding: 10px 50px;
+
+        &.u-hidden {
+            display: none;
+        }
     }
 
     & dt {

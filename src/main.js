@@ -9,7 +9,13 @@ DocReady(() => {
     ///////////////////////////////////////////////////
 
     function activate() {
-        console.log('document ready');
+        hideAllDd();
     }
 
+    function hideAllDd() {
+        const ddElements = document.getElementsByTagName('dd');
+        for (const element of ddElements) {
+            element.classList.add('u-hidden');
+        }
+    }
 });
