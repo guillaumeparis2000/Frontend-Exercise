@@ -4,3 +4,30 @@ body {
     text-align: center;
     background: grey;
 }
+
+dl.Accordion {
+    & dd {
+        margin: 0;
+        padding: 20px 0;
+        font-size: 14px;
+        background: #fbfbfb;
+        padding: 10px 50px;
+    }
+
+    & dt {
+        cursor: pointer;
+        font-size : 18px;
+        line-height: 23px;
+        background: #2ebb98;
+        border-bottom: 1px solid #c5c5c5;
+        border-top: 1px solid white;
+        font-weight: 400;
+        color: #fff;
+        text-align: left;
+        padding: 10px 14px;
+
+        &:first-child {
+            border-top: none;
+        }
+    }
+}
