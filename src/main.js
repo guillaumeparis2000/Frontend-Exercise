@@ -64,7 +64,7 @@ DocReady(() => {
             }
         };
 
-        xmlhttp.open('GET', '/ajax-content/' + element.getAttribute('data-file-name'), true);
+        xmlhttp.open('GET', './ajax-content/' + element.getAttribute('data-file-name'), true);
         xmlhttp.send();
     }
 
