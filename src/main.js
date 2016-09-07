@@ -15,17 +15,14 @@ DocReady(() => {
 
     function hideAllDd() {
         const ddElements = document.getElementsByTagName('dd');
-        for (const element of ddElements) {
-            element.classList.add('u-hidden');
-        }
+
+        Object.keys(ddElements).map( (value) => ddElements[value].classList.add('u-hidden') );
     }
 
     function addClickEventOnDt() {
         const dtElements = document.getElementsByTagName('dt');
 
-        for (const element of dtElements) {
-            element.addEventListener('click', dtClick, false);
-        }
+        Object.keys(dtElements).map( (value) => dtElements[value].addEventListener('click', dtClick, false) );
     }
 
     function dtClick() {
@@ -41,13 +38,11 @@ DocReady(() => {
         if (hide) {
             element.nextElementSibling.classList.add('u-hidden');
         }
-        else{
-            if(this.classList.contains('ajax-request')) {
-                getAjaxContent(this);
-            }
-            else {
-                element.nextElementSibling.classList.remove('u-hidden');
-            }
+        else if(this.classList.contains('ajax-request')) {
+            getAjaxContent(this);
+        }
+        else {
+            element.nextElementSibling.classList.remove('u-hidden');
         }
     }
 
