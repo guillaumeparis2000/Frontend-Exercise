@@ -29,16 +29,8 @@ DocReady(() => {
     }
 
     function dtClick() {
-        if(this.classList.contains('ajax-request')) {
-            getAjaxContent(this);
-        }
-        else {
-            toggleDt(this);
-        }
-    }
-
-    function toggleDt(element) {
         let hide = true;
+        const element = this;
 
         if (element.nextElementSibling.classList.contains('u-hidden')) {
             hide = false;
@@ -47,10 +39,15 @@ DocReady(() => {
         hideAllDd();
 
         if (hide) {
-            element.nextElementSibling.classList.add('u-hidden')
+            element.nextElementSibling.classList.add('u-hidden');
         }
         else{
-            element.nextElementSibling.classList.remove('u-hidden')
+            if(this.classList.contains('ajax-request')) {
+                getAjaxContent(this);
+            }
+            else {
+                element.nextElementSibling.classList.remove('u-hidden');
+            }
         }
     }
 
@@ -60,7 +57,7 @@ DocReady(() => {
         xmlhttp.onreadystatechange = () => {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                 element.nextElementSibling.innerHTML =  xmlhttp.responseText;
-                toggleDt(element);
+                element.nextElementSibling.classList.remove('u-hidden');
             }
         };
 
