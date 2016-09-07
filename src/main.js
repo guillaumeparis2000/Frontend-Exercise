@@ -57,7 +57,7 @@ DocReady(() => {
     function getAjaxContent(element, callback) {
         let xmlhttp = new XMLHttpRequest();
 
-        xmlhttp.onreadystatechange = function () {
+        xmlhttp.onreadystatechange = () => {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                 element.nextElementSibling.innerHTML =  xmlhttp.responseText;
                 toggleDt(element);
